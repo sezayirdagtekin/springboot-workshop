@@ -6,6 +6,8 @@ RUN rm -rf ./webapps/*
 
 COPY ./target/*.war .
 
+ENV JAVA_OPTS="-Dspring.profiles.active=dev"
+
 EXPOSE 8080
 
 CMD ["catalina.sh", "run"]
