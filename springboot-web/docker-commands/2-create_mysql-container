@@ -1,0 +1,22 @@
+#Get mysql and run as container and create sezodb database
+ docker run --name yenidb  -e MYSQL_ROOT_PASSWORD=666666 -e MYSQL_DATABASE=sezodb -d mysql:5
+ 
+#connect container interactively 
+ docker container  exec -it  mysql-container bash 
+
+#connect mysql 
+ mysql  -uroot -p666666 
+ 
+ mysql> show databases;       
+ 
+ mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sezodb             |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)

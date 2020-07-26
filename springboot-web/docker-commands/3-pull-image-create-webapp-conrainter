@@ -1,0 +1,27 @@
+#Pull Image
+docker pull sezayir/springboot-web:first
+$ docker image ls
+REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+sezayir/springboot-web   first               454dc6304e88        3 days ago          663MB
+
+#Create and Run container
+$ docker  run -d -p 8080:8080  sezayir/springboot-web:first                                                                                                                                        10444324dbb50e2da8b725ceaa6be415001ab966378fa0dc7dad0de14ad65862
+
+$ docker ps
+CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS                    NAMES
+10444324dbb5        sezayir/springboot-web:first   "catalina.sh run"        5 seconds ago       Up 4 seconds        0.0.0.0:8080->8080/tcp   silly_heyrovsky
+2e84b0a7fd6f        mysql:5                        "docker-entrypoint.s…"   42 minutes ago      Up 42 minutes       3306/tcp, 33060/tcp      mysql-container
+
+#Go to inside container
+$ docker exec -it 104 sh                                                                                                                                                                           # pwd
+/usr/local/tomcat/webapps
+# ping google.com
+PING google.com (172.217.17.238) 56(84) bytes of data.
+64 bytes from muc11s14-in-f14.1e100.net (172.217.17.238): icmp_seq=1 ttl=115 time=27.3 ms
+
+#There is no network. You will get error
+# ping mysql-container
+ping: mysql-container: Temporary failure in name resolution
+#
+
+
