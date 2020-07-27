@@ -1,0 +1,40 @@
+#This just test on alpine. Not recomended
+# Get alpine image
+docker container run -it --network my-network alpine 
+
+# ping sezoweb
+PING sezoweb (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.136 ms
+
+ # ping mysqlcontainer
+PING mysqlcontainer (172.18.0.2): 56 data bytes
+64 bytes from 172.18.0.2: seq=0 ttl=64 time=0.137 ms
+
+ # mysql
+/bin/sh: mysql: not found
+
+
+# apk add --no-cache mysql-client
+
+# mysql -uroot -p666666 -hmysqlcontainer
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sezodb             |
+| sys                |
+
+
+MySQL [(none)]> use sezodb;
+
+Database changed
+MySQL [sezodb]> show full tables;
++------------------+------------+
+| Tables_in_sezodb | Table_type |
++------------------+------------+
+| user             | BASE TABLE |
++------------------+------------+

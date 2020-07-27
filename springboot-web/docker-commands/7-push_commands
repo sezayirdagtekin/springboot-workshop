@@ -1,0 +1,30 @@
+$ docker image ls
+REPOSITORY          TAG                    IMAGE ID            CREATED             SIZE
+sezoweb             latest                 2b74ca64fa4e        3 hours ago         684MB
+
+user@samsung MINGW64 /d/springboot-workshop/springboot-web (master)
+$ docker tag  sezoweb sezayir/springboot-web:first   
+                                                                                                                                               
+user@samsung MINGW64 /d/springboot-workshop/springboot-web (master)
+
+$ docker image ls
+REPOSITORY               TAG                    IMAGE ID            CREATED             SIZE
+sezoweb                  latest                 2b74ca64fa4e        3 hours ago         684MB
+sezayir/springboot-web   first                  2b74ca64fa4e        3 hours ago         684MB
+
+#LOGIN
+$ docker login                                                                                                                                                                                      Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: sezayir
+Password:
+WARNING! Your password will be stored unencrypted in C:\Users\user\.docker\config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+#PUSH DOCKER HUB
+$ docker push sezayir/springboot-web:first   
+305dbda3ea8f: Mounted from library/tomcat 
+....
+
+first: digest: sha256:0f2cfac7e19966f25cb4e3ff86f69c9c618ecbb543d4755cb4726787a0ebe6b7 size: 2633  
