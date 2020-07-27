@@ -1,3 +1,43 @@
 
 $ docker build -t sezoweb .
 docker  run -d -p 8080:8080  --network my-network  sezoweb
+
+$ docker logs -f 329
+
+27-Jul-2020 06:29:07.389 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+27-Jul-2020 06:29:07.468 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 28455 ms
+2020-07-27 06:29:07.523  INFO 1 --- [         task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-07-27 06:29:08.644  INFO 1 --- [         task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-07-27 06:29:08.737  INFO 1 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-07-27 06:29:10.477  INFO 1 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-07-27 06:29:10.542  INFO 1 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+
+# Get in to mysql container
+docker exec -it mysqlcontainer bash
+
+#Connect to mysql database
+root@85eb9d5272e0:/# mysql -uroot -p666666
+
+#Display databases
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sezodb             |
+| sys                |
++--------------------+
+5 rows in set (0.22 sec)
+
+mysql> use sezodb
+Database changed
+
+mysql> SHOW FULL TABLES;
++------------------+------------+
+| Tables_in_sezodb | Table_type |
++------------------+------------+
+| user             | BASE TABLE |
++------------------+------------+
+1 row in set (0.00 sec)
