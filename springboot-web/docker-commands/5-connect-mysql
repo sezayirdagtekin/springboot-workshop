@@ -1,0 +1,3 @@
+
+$ docker build -t sezoweb .
+docker  run -d -p 8080:8080  --network my-network  sezoweb

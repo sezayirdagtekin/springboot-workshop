@@ -11,7 +11,7 @@ $ docker network ls                                                             
 	760483a44b2e        none                null                local
 
 #Create mysql container with network
-   $ docker run --name yenidb --network my-network -e MYSQL_ROOT_PASSWORD=666666 -e MYSQL_DATABASE=sezodb -d mysql:5
+   $ docker run --name mysqlcontainer --network my-network -e MYSQL_ROOT_PASSWORD=666666 -e MYSQL_DATABASE=sezodb -d mysql:5
    5d9b331aa838daa44babf46880d2ae14368ca1387d8b33c13f9c6161697218a6
   
 #Run web app container with network
@@ -26,10 +26,10 @@ $ docker exec -it sezoweb sh
 PING google.com (172.217.17.238) 56(84) bytes of data.
 64 bytes from muc11s14-in-f14.1e100.net (172.217.17.238): icmp_seq=1 ttl=115 time=24.4 ms
 
-# ping yenidb
-PING yenidb (172.18.0.2) 56(84) bytes of data.
-64 bytes from yenidb.my-network (172.18.0.2): icmp_seq=1 ttl=64 time=0.150 ms
-64 bytes from yenidb.my-network (172.18.0.2): icmp_seq=2 ttl=64 time=0.069 ms
+# ping mysqlcontainer
+PING mysqlcontainer (172.18.0.2) 56(84) bytes of data.
+64 bytes from mysqlcontainer.my-network (172.18.0.2): icmp_seq=1 ttl=64 time=0.150 ms
+64 bytes from mysqlcontainer.my-network (172.18.0.2): icmp_seq=2 ttl=64 time=0.069 ms
 
 
 
