@@ -1,0 +1,13 @@
+#create docker mysql container and open port
+$ docker run -p 3306:3306 --name mysqlcontainer --network my-network -e MYSQL_ROOT_PASSWORD=666666 -e MYSQL_DATABASE=sezodb -d mysql:5   
+ 6f3f93ca3f31167d6d09ad0ea296043774b8d9a2b5d92a04c9af863b15a64a81
+
+# OPEN POWER SHELL
+PS C:\Users\user> Test-NetConnection 192.168.99.100 -p 3306    
+
+	ComputerName     : 192.168.99.100 
+	RemoteAddress    : 192.168.99.100 
+	RemotePort       : 3306  
+	InterfaceAlias   : VirtualBox Host-Only Network #2
+	SourceAddress    : 192.168.99.1  
+	TcpTestSucceeded : True
