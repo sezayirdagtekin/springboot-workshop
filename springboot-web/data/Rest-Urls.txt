@@ -1,0 +1,15 @@
+
+http://192.168.99.100 :8080/springboot-web/user/add
+post body:
+
+{
+  "name":"Sezayir",
+  "surname":"Dagtekin"
+}
+
+
+http://192.168.99.100:8080/springboot-web/user/all
+
+
+[{"id":1,"name":"Ege","surname":"Cansel"},
+{"id":2,"name":"Sezayir","surname":"Dagtekin"}]
