@@ -1,7 +1,38 @@
 
-
+1.
 mvn clean  package docker:build
 
 $ docker image ls
 REPOSITORY                        TAG                    IMAGE ID            CREATED              SIZE
 sezayir/springboot-docker-maven   latest                 a92cd553f238        About a minute ago   684MB
+
+
+2. If you add  docker:build  in maven life cycle 
+ mvn clean  package
+
+ <executions>
+ <execution>
+   <phase>package</phase>
+ 	 <goals>
+ 	    <goal>build</goal>
+ 	 </goals>
+   </execution>
+ </executions>
+ 
+[INFO] DOCKER> Successfully tagged sezayir/springboot-docker-maven:latest
+[INFO] DOCKER> [sezayir/springboot-docker-maven:latest]: Built image sha256:10e29
+[INFO] DOCKER> [sezayir/springboot-docker-maven:latest]: Removed old image sha256:262d0
+[INFO] DOCKER> [sezayir/springboot-docker-maven:latest]: Tag with latest
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ springboot-web ---
+[INFO] Installing D:\springboot-workshop\springboot-web\target\springboot-web.war to C:\Users\user\.m2\repository\com\sezayir\springboot-web\0.0.1-SNAPSHOT\springboot-web-0.0.1-SNAPSHOT.war
+[INFO] Installing D:\springboot-workshop\springboot-web\pom.xml to C:\Users\user\.m2\repository\com\sezayir\springboot-web\0.0.1-SNAPSHOT\springboot-web-0.0.1-SNAPSHOT.pom
+[INFO] 
+[INFO] --- docker-maven-plugin:0.21.0:push (default-cli) @ springboot-web ---
+[INFO] DOCKER> The push refers to repository [docker.io/sezayir/springboot-docker-maven]
+[INFO] DOCKER> latest: digest: sha256:9aebad02d1691d882bbc17be0208c0fd5d20d711f4bcf41e7f055044a3f68fb0 size: 2633
+[INFO] DOCKER> Pushed sezayir/springboot-docker-maven in 2 mınutes and 44 seconds 
+[INFO] DOCKER> The push refers to repository [docker.io/sezayir/springboot-docker-maven]
+[INFO] DOCKER> latest: digest: sha256:9aebad02d1691d882bbc17be0208c0fd5d20d711f4bcf41e7f055044a3f68fb0 size: 2633
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
