@@ -1,0 +1,53 @@
+
+mvn deploy:(not prefered)
+1. Add build and deploy  phase
+2. Give deploymen id
+3. Skip maven deployment plugin
+
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+				</execution>
+				<execution>
+				    <id> anyid</id>
+					<phase>deploy</phase>
+					<goals>
+						<goal>push</goal>
+					</goals>
+				</execution>	
+				</executions>	
+			
+			
+			
+			<!-- skip maven deploy plugin ,now we can use docker maven plugin for deployment -->
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			
+4. Result
+
+INFO] --- maven-deploy-plugin:2.8.2:deploy (default-deploy) @ springboot-web ---
+[INFO] Skipping artifact deployment
+[INFO] 
+[INFO] --- docker-maven-plugin:0.21.0:push (anyid) @ springboot-web ---
+[INFO] DOCKER> The push refers to repository [docker.io/sezayir/springboot-docker-maven]
+
+
+
+[INFO] DOCKER> latest: digest: sha256:6d1ddfed811e80d2f648b1d30829fb8fcbb5d223e23bd58971ffcac26dce7ed1 size: 2633
+[INFO] DOCKER> Pushed sezayir/springboot-docker-maven in 5 mınutes and 32 seconds 
+[INFO] DOCKER> The push refers to repository [docker.io/sezayir/springboot-docker-maven]
+
+[INFO] DOCKER> latest: digest: sha256:6d1ddfed811e80d2f648b1d30829fb8fcbb5d223e23bd58971ffcac26dce7ed1 size: 2633
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 06:34 min
+[INFO] Finished at: 2020-07-29T15:47:44+03:00
+[INFO] ------------------------------------------			

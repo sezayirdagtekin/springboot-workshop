@@ -115,9 +115,23 @@
 						<goals>
 							<goal>build</goal>
 						</goals>
-					</execution>
-				</executions>
-			</plugin>	
+				</execution>
+				<execution>
+				    <id> anyid</id>
+					<phase>deploy</phase>
+					<goals>
+						<goal>push</goal>
+					</goals>
+				</execution>	
+				</executions>	
+			</plugin>
+			<!-- skip maven deploy plugin ,now we can use docker maven plugin for deployment -->
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
