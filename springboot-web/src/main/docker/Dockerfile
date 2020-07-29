@@ -7,7 +7,7 @@ WORKDIR /usr/local/tomcat/webapps
 EXPOSE 8080 
 RUN rm -rf ./webapps/*
 
-COPY ./target/*.war .
+COPY maven/*.war .
 
 ENV JAVA_OPTS="-Dspring.profiles.active=dev"
 

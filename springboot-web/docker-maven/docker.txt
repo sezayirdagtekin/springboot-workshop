@@ -1,0 +1,7 @@
+
+
+mvn clean  package docker:build
+
+$ docker image ls
+REPOSITORY                        TAG                    IMAGE ID            CREATED              SIZE
+sezayir/springboot-docker-maven   latest                 a92cd553f238        About a minute ago   684MB

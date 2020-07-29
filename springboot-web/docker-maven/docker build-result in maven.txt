@@ -1,0 +1,46 @@
+INFO] --- docker-maven-plugin:0.21.0:build (default-cli) @ springboot-web ---
+[INFO] Copying files to D:\springboot-workshop\springboot-web\target\docker\sezayir\springboot-docker-maven\build\maven
+[INFO] Building tar: D:\springboot-workshop\springboot-web\target\docker\sezayir\springboot-docker-maven\tmp\docker-build.tar
+[INFO] DOCKER> [sezayir/springboot-docker-maven:latest]: Created docker-build.tar in 2 seconds 
+[INFO] DOCKER> Step 1/8 : FROM tomcat:8.5.57-jdk11-openjdk
+[INFO] DOCKER> 
+[INFO] DOCKER> ---> 7692725bf004
+[INFO] DOCKER> Step 2/8 : MAINTAINER sezayir dagtekin "sezayir99@gmail.com"
+[INFO] DOCKER> 
+[INFO] DOCKER> ---> Using cache
+[INFO] DOCKER> ---> 4ac68f87687b
+[INFO] DOCKER> Step 3/8 : WORKDIR /usr/local/tomcat/webapps
+[INFO] DOCKER> 
+[INFO] DOCKER> ---> Using cache
+[INFO] DOCKER> ---> c680cc333cb8
+[INFO] DOCKER> Step 4/8 : EXPOSE 8080
+[INFO] DOCKER> 
+[INFO] DOCKER> ---> Using cache
+[INFO] DOCKER> ---> 67afc3e0dab6
+[INFO] DOCKER> Step 5/8 : RUN rm -rf ./webapps/*
+[INFO] DOCKER> 
+[INFO] DOCKER> ---> Using cache
+[INFO] DOCKER> ---> e230cfe3e5d6
+[INFO] DOCKER> Step 6/8 : COPY maven/*.war .
+[INFO] DOCKER> 
+[INFO] DOCKER> ---> 8451e71b7f85
+[INFO] DOCKER> Step 7/8 : ENV JAVA_OPTS="-Dspring.profiles.active=dev"
+[INFO] DOCKER> 
+[INFO] DOCKER> ---> Running in 7ef22fa631ac
+[INFO] DOCKER> Removing intermediate container 7ef22fa631ac
+[INFO] DOCKER> ---> 53a79949c12d
+[INFO] DOCKER> Step 8/8 : CMD ["catalina.sh", "run"]
+[INFO] DOCKER> 
+[INFO] DOCKER> ---> Running in 713b80872a97
+[INFO] DOCKER> Removing intermediate container 713b80872a97
+[INFO] DOCKER> ---> a92cd553f238
+[INFO] DOCKER> Successfully built a92cd553f238
+[INFO] DOCKER> Successfully tagged sezayir/springboot-docker-maven:latest
+[INFO] DOCKER> [sezayir/springboot-docker-maven:latest]: Built image sha256:a92cd
+[INFO] DOCKER> [sezayir/springboot-docker-maven:latest]: Tag with latest
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 35.789 s
+[INFO] Finished at: 2020-07-29T11:32:23+03:00
+[INFO] ------------------------------------------------------------------------
