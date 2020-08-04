@@ -94,7 +94,7 @@
 			        
 					<images>
 						<image>
-							<name>sezayir/springboot-docker-maven</name>
+							<name>sezayir/springboot-docker-maven-compose</name>
 							<build>
 								<dockerFileDir>${project.basedir}/src/main/docker/</dockerFileDir>
 			
