@@ -1,0 +1,7 @@
+
+$ docker-compose build
+	database uses an image, skipping
+	webapp uses an image, skipping
+
+$ docker-compose up  
+    
