@@ -1,0 +1,29 @@
+version: "3.6"
+
+services: 
+  webapp:
+    image: sezoweb 
+    networks: 
+      - my-network
+    ports:
+      - "8080:8080"  
+    depends_on:
+      - database  
+      
+  database:
+    image: "mysql:5"
+    restart: always
+    networks:
+      - my-network
+    ports:
+    - "3306:3306"   
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=666666
+      - MYSQL_DATABASE=sezodb
+
+networks:
+  my-network:
+        
+            
+  
