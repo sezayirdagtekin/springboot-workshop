@@ -25,6 +25,13 @@ This node joined a swarm as a worker.
 
 
 [node1] (local) root@192.168.0.28 ~
+$ docker node ls
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+ed1t8wmsi0iqsnn1k148b4mf8 *   node1               Ready               Active              Leader              19.03.11
+kwvucbb5o32kwf5hs5gm4vmno     node2               Ready               Active                                  19.03.11
+
+
+[node1] (local) root@192.168.0.28 ~
 #for  leave from swarm mode use that command if you needed
 $ docker swarm leave --force 
   Node left the swarm.
