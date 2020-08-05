@@ -1,0 +1,19 @@
+  #we can not able to use bridge network between different host machine in swarm
+  $ docker service create -d --network my-network -e MYSQL_ROOT_PASSWORD=666666 MYSQL_DATABASE=sezodb --database mysql 
+  Error: No such network: my-network
+  
+  # create overlay network
+  $ docker network create  --driver overlay my-network-overlay   
+  
+  
+#list  all networks
+[node1] (local) root@192.168.0.28 
+$ docker network ls
+NETWORK ID          NAME                 DRIVER              SCOPE
+8de0ff88ee4f        bridge               bridge              local
+5274c35c8605        docker_gwbridge      bridge              local
+a143b66df57a        host                 host                local
+u5un115vndd8        ingress              overlay             swarm
+b50s4zjvkm3v        my-network-overlay   overlay             swarm
+6d2543f47970        none                 null                local
+

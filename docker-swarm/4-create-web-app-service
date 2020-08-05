@@ -1,0 +1,14 @@
+[node1] (local) root@192.168.0.28 ~
+$ docker service  create -d --network my-network-overlay -p 8080:8080 --name sezoweb sezayir/springboot-web:first
+laeqmi87qd58iu8aaql217ur3
+
+[node1] (local) root@192.168.0.28 ~
+$ docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE                          PORTS
+pauf9oho8761        database            replicated          1/1                 mysql:5                        
+laeqmi87qd58        sezoweb             replicated          1/1                 sezayir/springboot-web:first   *:8080->8080/tcp
+
+[node1] (local) root@192.168.0.28 ~
+$ docker  container ls
+CONTAINER ID        IMAGE                          COMMAND             CREATED             STATUS              PORTS               NAMES
+12c9a10d0e72        sezayir/springboot-web:first   "catalina.sh run"   8 seconds ago       Up 7 seconds        8080/tcp            sezoweb.1.lvo8n7s43t9xfosr2wru8xxpq

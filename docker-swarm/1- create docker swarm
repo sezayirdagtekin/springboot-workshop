@@ -1,0 +1,31 @@
+
+1. https://labs.play-with-docker.com/p/bsl6j9lim9m0008babng
+   create two nodes
+	   [node1] (local) root@192.168.0.28 ~
+	   [node2] (local) root@192.168.0.27 ~
+ 
+[node1] (local) root@192.168.0.28 ~
+$  docker swarm init
+Error response from daemon: could not choose an IP address to advertise since this system has multiple addresses on different interfaces (192.168.0.28 on eth0 and 172.18.0.51 on eth1) - specify one with --advertise-addr
+
+[node1] (local) root@192.168.0.28 ~
+$ docker swarm init --advertise-addr eth0
+Swarm initialized: current node (ed1t8wmsi0iqsnn1k148b4mf8) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-3qgsimbw1kzt6j7vmreijir5rsvc19ozw5fcgw0gx1hh0mqsti-4se7s1jtq5mywzefuk7iu1l7s 192.168.0.28:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+
+[node2] (local) root@192.168.0.27 ~
+$ docker swarm join --token SWMTKN-1-3qgsimbw1kzt6j7vmreijir5rsvc19ozw5fcgw0gx1hh0mqsti-4se7s1jtq5mywzefuk7iu1l7s 192.168.0.28:2377
+This node joined a swarm as a worker.
+
+
+[node1] (local) root@192.168.0.28 ~
+#for  leave from swarm mode use that command if you needed
+$ docker swarm leave --force 
+  Node left the swarm.
+  

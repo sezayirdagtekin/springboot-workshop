@@ -1,0 +1,19 @@
+# create service for mysql
+[node1] (local) root@192.168.0.28 ~
+$ docker service create -d --network my-network-overlay -e MYSQL_ROOT_PASSWORD=666666 -e MYSQL_DATABASE=sezodb --name database mysql:5 
+pauf9oho8761uru1n8oonp3y6
+[node1] (local) root@192.168.0.28 ~
+$ docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
+pauf9oho8761        database            replicated          1/1                 mysql:5             
+
+$ docker  container ls
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+#Check on the second node1
+[node2] (local) root@192.168.0.27 ~
+$ docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                 NAMES
+d17bea30f236        mysql:5             "docker-entrypoint.s…"   59 seconds ago      Up 58 seconds       3306/tcp, 33060/tcp   database.1.wmjr3ysa2x5mlv5weikgbw56u
+
+	
