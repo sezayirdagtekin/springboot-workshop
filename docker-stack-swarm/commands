@@ -1,0 +1,14 @@
+Go to docker lab and create  swarm template(3 managers with 2 workers) 
+https://labs.play-with-docker.com/
+
+[manager1] (local) root@192.168.0.30 ~
+$ docker stack deploy -c docker-compose.yaml mystack
+Creating network mystack_fleetman-network
+Creating service mystack_fleetman-webapp
+Creating service mystack_database
+
+[manager1] (local) root@192.168.0.30 ~
+$ docker service ls
+ID                  NAME                      MODE                REPLICAS            IMAGE                                               PORTS
+o1dacv43gz54        mystack_database          replicated          1/1                 mysql:5                                             
+jg1skxh6ju73        mystack_fleetman-webapp   replicated          2/2                 virtualpairprogrammers/fleetman-production:latest   *:80->8080/tcp
