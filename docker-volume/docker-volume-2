@@ -1,0 +1,72 @@
+
+1 .
+$ docker run --name database -v mydata:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=666666 -e MYSQL_DATABASE=sezayirdb  -d mysql:5
+  bc2c8cd1d1a2fc7ba097091cfeb67e6f97911385d12c4f8764600078db13ba13
+
+2.
+$ docker volume ls                                                                                                                                                                                 DRIVER              VOLUME NAME
+  local         mydata
+  
+3. #inspect volume
+$ docker volume inspect mydata                                                                                                                                                                     [
+    {
+        "CreatedAt": "2020-08-07T08:20:47Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/mnt/sda1/var/lib/docker/volumes/mydata/_data",
+        "Name": "mydata",
+        "Options": null,
+        "Scope": "local"
+    }
+] 
+
+4. 
+docker  container exec -it database bash  
+root@bc2c8cd1d1a2:/# mysql -p666666
+mysql> use sezayirdb;
+mysql> CREATE TABLE PERSON (
+    -> id INT(6) AUTO_INCREMENT PRIMARY KEY,
+    -> firstname VARCHAR(30) NOT NULL,
+    -> lastname VARCHAR(30) NOT NULL,
+    -> email VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+5. 
+mysql> exit
+root@bc2c8cd1d1a2:/# cd var/lib/mysql
+root@bc2c8cd1d1a2:/var/lib/mysql# ls
+     ....  private_key.pem  server-cert.pem  sezayirdb
+	 
+6. 
+
+$ docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                 NAMES
+bc2c8cd1d1a2        mysql:5             "docker-entrypoint.s…"   14 minutes ago      Up 14 minutes       3306/tcp, 33060/tcp   database
+
+user@samsung MINGW64 /c/Program Files/Docker Toolbox
+$ docker stop bc
+bc
+user@samsung MINGW64 /c/Program Files/Docker Toolbox
+$ docker rm bc
+bc
+	 
+7# VOLUE IS PERSISTENT
+$ docker volume ls	
+	DRIVER              VOLUME NAME
+	local               mydata 
+	
+8.  Create new container and mount same volume
+$ docker run --name database -v mydata:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=666666 -e MYSQL_DATABASE=sezayirdb  -d mysql:5   	
+
+9.Connect mysql and  you will your data
+$ docker  container exec -it database bash
+root@1450e412a660:/# mysql -p666666
+mysql> use sezayirdb;
+mysql> show tables;
++---------------------+
+| Tables_in_sezayirdb |
++---------------------+
+| PERSON              |
++---------------------+
+1 row in set (0.00 sec)
