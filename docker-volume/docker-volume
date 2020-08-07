@@ -1,0 +1,107 @@
+1. docker run --name database  -e MYSQL_ROOT_PASSWORD=666666  -d mysql:5
+ 
+2. $ docker image ls
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mysql               5                   718a6da099d8        2 days ago          448MB
+
+3. $ docker ps
+ CONTAINER ID      IMAGE        COMMAND                  CREATED             STATUS              PORTS                 NAMES
+ 79ebc3bbc1a3      mysql:5       "docker-entrypoint.s…"   15 seconds ago     Up 15 seconds      3306/tcp, 33060/tcp   database
+
+4. $ docker container  exec -it database bash                                                                                                                                                         root@79ebc3bbc1a3:/# mysql -p666666
+root@79ebc3bbc1a3:/# mysql -p666666
+
+4. mysql> create database sezodb;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sezodb             |
+| sys                |
++--------------------+
+
+
+6. mysql> CREATE TABLE PERSON (
+    -> id INT(6) AUTO_INCREMENT PRIMARY KEY,
+    -> firstname VARCHAR(30) NOT NULL,
+    -> lastname VARCHAR(30) NOT NULL,
+    -> email VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CLEAR
+mysql> clear
+mysql> show tables;
++------------------+
+| Tables_in_sezodb |
++------------------+
+| PERSON           |
++------------------+
+1 row in set (0.00 sec)
+
+7.  mysql> use sezodb;
+    Database changed
+
+8. 
+mysql> use sezodb;
+Database changed
+mysql> CREATE TABLE PERSON (
+    -> id INT(6) AUTO_INCREMENT PRIMARY KEY,
+    -> firstname VARCHAR(30) NOT NULL,
+    -> lastname VARCHAR(30) NOT NULL,
+    -> email VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+9. mysql> show tables;
++------------------+
+| Tables_in_sezodb |
++------------------+
+| PERSON           |
++------------------+
+1 row in set (0.00 sec)
+
+exit;
+
+10: VOLUME [/var/lib/mysql]
+root@7040dd345058:/var/lib/mysql# dir
+  ibdata1  mysql  ... sezodb
+  
+ 12. if  you stop and rm container then start new container  you will lose  your data
+ 
+ 13 .  $ docker  container inspect database    
+ 
+  "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "76813e7f57dc70990b949c1e5ae25753afedbbb54ea156c60da05620c964bf75",
+                "Source": "/mnt/sda1/var/lib/docker/volumes/76813e7f57dc70990b949c1e5ae25753afedbbb54ea156c60da05620c964bf75/_data",
+                "Destination": "/var/lib/mysql",
+                "Driver": "local",
+                "Mode": "",
+                "RW": true,
+                "Propagation": ""
+            }
+14.
+
+#Display all volumes
+$ docker volume  ls
+DRIVER              VOLUME NAME
+local               86e51b9609ef5aa9a54255abc090257662a1896ddc4b3d45b1a01910d7189c16
+local               76813e7f57dc70990b949c1e5ae25753afedbbb54ea156c60da05620c964bf75
+
+#remove unused volumes
+$ docker volume prune                                                                                                                                                                              
+$ docker volume  ls
+
+DRIVER              VOLUME NAME
+local               76813e7f57dc70990b949c1e5ae25753afedbbb54ea156c60da05620c964bf75
+		
+			
+
+
